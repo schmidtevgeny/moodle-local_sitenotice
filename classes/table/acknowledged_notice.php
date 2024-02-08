@@ -68,8 +68,8 @@ class acknowledged_notice extends table_sql implements renderable {
      * @param int $page current page.
      * @param int $perpage  number of record per page.
      */
-    public function __construct($uniqueid, \moodle_url $url, int $noticeid, $filters = [],
-                                $download = '', $page = 0, $perpage = 20) {
+    public function __construct($uniqueid, \moodle_url $url, int $noticeid, array $filters = [],
+                                string $download = '', int $page = 0, int $perpage = 20) {
         parent::__construct($uniqueid);
 
         $this->set_attribute('class', 'local_sitenotice acknowledged_notices');
@@ -151,7 +151,7 @@ class acknowledged_notice extends table_sql implements renderable {
      * @param bool $count whether count or get records.
      * @return array
      */
-    protected function get_sql_and_params($count = false) {
+    protected function get_sql_and_params(bool $count = false) {
         $alias = self::TABLE_ALIAS;
         if ($count) {
             $select = "COUNT(1)";
@@ -221,7 +221,7 @@ class acknowledged_notice extends table_sql implements renderable {
      * @param \stdClass $row dismissed notice record
      * @return string
      */
-    protected function col_timecreated($row) {
+    protected function col_timecreated(\stdClass $row) {
         $this->previoususer = $row->userid;
         if ($row->timecreated) {
             return userdate($row->timecreated, get_string('report:timeformat:sortable', 'local_sitenotice'), null, false);
@@ -236,7 +236,7 @@ class acknowledged_notice extends table_sql implements renderable {
      * @param \stdClass $row dismissed notice record
      * @return string
      */
-    protected function col_timecreated_spreadsheet($row) {
+    protected function col_timecreated_spreadsheet(\stdClass $row) {
         if ($row->timecreated) {
             return self::DAY_SECS_SPREADSHEET_DIFF + ($row->timecreated / DAYSECS);
         } else {
@@ -250,7 +250,7 @@ class acknowledged_notice extends table_sql implements renderable {
      * @param \stdClass $row acknowledged notice record
      * @return string
      */
-    protected function col_hlinkcount($row) {
+    protected function col_hlinkcount(\stdClass $row) {
         // Only count on the first record of a user.
         if ($this->previoususer == $row->userid) {
             return '';
