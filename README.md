@@ -1,4 +1,4 @@
-![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/catalyst/moodle-local_sitenotice/ci.yml?branch=MOODLE_39_STABLE)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/catalyst/moodle-local_sitenotice/ci.yml?branch=MOODLE_403_STABLE)
 
 # Site Notice
 This plugin displays notices to users.
@@ -12,6 +12,13 @@ This plugin displays notices to users.
  * Optionally request users to accept a notice, or they will be logged out from LMS.
  * Force users to be logged out after seeing a notice.
  * Reporting on who accepted / dismissed a notice. 
+
+## Branches
+
+| Moodle version   | Branch            |
+|------------------|-------------------|
+| Moodle 3.9 - 4.1 | MOODLE_39_STABLE  |
+| Moodle 4.3+      | MOODLE_403_STABLE |
 
 ## Configuration 
 
