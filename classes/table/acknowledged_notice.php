@@ -273,7 +273,7 @@ class acknowledged_notice extends table_sql implements renderable {
      */
     public function other_cols($column, $row) {
         // Check if the column name is the id of a notice hyperlink.
-        if ($column > 0) {
+        if (is_numeric($column) && $column > 0) {
             // Only do link count on the first record of a user.
             if ($this->previoususer == $row->userid) {
                 return '';
