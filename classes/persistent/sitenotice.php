@@ -163,7 +163,7 @@ class sitenotice extends persistent {
     /**
      * Get enabled notices.
      *
-     * @return \stdClass[]
+     * @return self[]
      */
     public static function get_enabled_notices(): array {
         if (!$result = self::get_enabled_notices_cache()->get('records')) {

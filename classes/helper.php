@@ -194,7 +194,7 @@ class helper {
             );
             $event = \local_sitenotice\event\sitenotice_reset::create($params);
             $event->trigger();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             \core\notification::error($e->getMessage());
         }
     }
@@ -219,7 +219,7 @@ class helper {
             );
             $event = \local_sitenotice\event\sitenotice_updated::create($params);
             $event->trigger();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             \core\notification::error($e->getMessage());
         }
     }
@@ -244,7 +244,7 @@ class helper {
             );
             $event = \local_sitenotice\event\sitenotice_updated::create($params);
             $event->trigger();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             \core\notification::error($e->getMessage());
         }
     }
@@ -563,7 +563,7 @@ class helper {
      * @param string $time Time.
      * @return string
      */
-    public static function format_interval_time(string $time) {
+    public static function format_interval_time(string $time): string {
         // Datetime for 01/01/1970.
         $datefrom = new \DateTime("@0");
         // Datetime for 01/01/1970 after the specified time (in seconds).
@@ -578,7 +578,7 @@ class helper {
      * @param bool $value boolean
      * @return string
      */
-    public static function format_boolean(bool $value) {
+    public static function format_boolean(bool $value): string {
         if ($value) {
             return get_string('booleanformat:true', 'local_sitenotice');
         } else {
@@ -590,9 +590,9 @@ class helper {
      * Get audience name from the audience options.
      *
      * @param int $cohortid Cohort id
-     * @return mixed
+     * @return string
      */
-    public static function get_cohort_name(int $cohortid) {
+    public static function get_cohort_name(int $cohortid): string {
         if ($cohortid == 0) {
             return get_string('notice:cohort:all', 'local_sitenotice');
         }
@@ -607,7 +607,7 @@ class helper {
      * @return mixed
      * @throws \coding_exception
      */
-    public static function get_course_name(int $courseid) {
+    public static function get_course_name(int $courseid): string {
         global $DB;
 
         if ($courseid == 0) {

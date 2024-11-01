@@ -35,7 +35,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_function_parameters
      */
-    public static function dismiss_notice_parameters() {
+    public static function dismiss_notice_parameters(): external_function_parameters {
         return new external_function_parameters (
             array(
                 'noticeid' => new external_value(PARAM_INT, 'notice id', VALUE_REQUIRED),
@@ -49,7 +49,7 @@ class local_sitenotice_external extends external_api {
      * @param int $noticeid Notice ID.
      * @return array
      */
-    public static function dismiss_notice(int $noticeid) {
+    public static function dismiss_notice(int $noticeid): array {
         $params = self::validate_parameters(self::dismiss_notice_parameters(),
             array('noticeid' => $noticeid));
 
@@ -70,7 +70,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_single_structure
      */
-    public static function dismiss_notice_returns() {
+    public static function dismiss_notice_returns(): external_single_structure {
         return new external_single_structure(
             array(
                 'status' => new external_value(PARAM_BOOL, 'status: true if success', VALUE_DEFAULT, "0"),
@@ -84,7 +84,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_function_parameters
      */
-    public static function acknowledge_notice_parameters() {
+    public static function acknowledge_notice_parameters(): external_function_parameters {
         return new external_function_parameters (
             array(
                 'noticeid' => new external_value(PARAM_INT, 'notice id', VALUE_REQUIRED),
@@ -96,9 +96,9 @@ class local_sitenotice_external extends external_api {
      * Acknowledge notice.
      *
      * @param int $noticeid Notice ID.
-     * @return []
+     * @return array
      */
-    public static function acknowledge_notice(int $noticeid) {
+    public static function acknowledge_notice(int $noticeid): array {
         $params = self::validate_parameters(self::acknowledge_notice_parameters(),
             array('noticeid' => $noticeid));
 
@@ -119,7 +119,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_single_structure
      */
-    public static function acknowledge_notice_returns() {
+    public static function acknowledge_notice_returns(): external_single_structure {
         return new external_single_structure(
             array(
                 'status' => new external_value(PARAM_BOOL, 'status: true if success', VALUE_DEFAULT, "0"),
@@ -132,7 +132,7 @@ class local_sitenotice_external extends external_api {
      * Incoming params.
      * @return \external_function_parameters
      */
-    public static function track_link_parameters() {
+    public static function track_link_parameters(): external_function_parameters {
         return new external_function_parameters (
             array(
                 'linkid' => new external_value(PARAM_INT, 'link id', VALUE_REQUIRED),
@@ -146,7 +146,7 @@ class local_sitenotice_external extends external_api {
      * @param int $linkid Link ID.
      * @return array
      */
-    public static function track_link(int $linkid) {
+    public static function track_link(int $linkid): array {
         $params = self::validate_parameters(self::track_link_parameters(), array('linkid' => $linkid));
         return helper::track_link($params['linkid']);
     }
@@ -156,7 +156,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_single_structure
      */
-    public static function track_link_returns() {
+    public static function track_link_returns(): external_single_structure {
         return new external_single_structure(
             array(
                 'status' => new external_value(PARAM_BOOL, 'status: true if success', VALUE_DEFAULT, "0"),
@@ -180,8 +180,8 @@ class local_sitenotice_external extends external_api {
      *
      * @return array
      */
-    public static function get_notices() {
-        $result = array();
+    public static function get_notices(): array {
+        $result = [];
         $result['status'] = true;
         $result['notices'] = json_encode(
             array_map(
@@ -200,7 +200,7 @@ class local_sitenotice_external extends external_api {
      *
      * @return \external_single_structure
      */
-    public static function get_notices_returns() {
+    public static function get_notices_returns(): external_single_structure {
         return new external_single_structure(
             array(
                 'status' => new external_value(PARAM_BOOL, 'status: true if success', VALUE_DEFAULT, "0"),
