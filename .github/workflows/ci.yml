@@ -9,3 +9,5 @@ jobs:
     with:
       disable_phpcpd: true
       disable_grunt: true
+    secrets:
+      moodle_org_token: ${{ secrets.MOODLE_ORG_TOKEN }}
