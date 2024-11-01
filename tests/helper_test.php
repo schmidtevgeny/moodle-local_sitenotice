@@ -24,6 +24,8 @@ use local_sitenotice\persistent\sitenotice;
  * @author     Dmitrii Metelkin <dmitriim@catalyst-au.net>
  * @copyright  Catalyst IT
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @covers \local_sitenotice\helper
  */
 class helper_test extends \advanced_testcase {
 
