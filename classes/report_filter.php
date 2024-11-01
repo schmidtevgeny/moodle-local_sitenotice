@@ -71,7 +71,7 @@ class report_filter {
      *
      * @throws \coding_exception
      */
-    public function __construct($baseurl, $tablealias = '') {
+    public function __construct(string $baseurl, string $tablealias = '') {
         $tablealias = $tablealias ? $tablealias . "." : '';
         $this->filterfields = [
             "timecreated" => new \user_filter_date('time', get_string('time'), false, "{$tablealias}timecreated"),
@@ -123,7 +123,7 @@ class report_filter {
      * Get filter sql from active filters.
      * @return array
      */
-    private function process_filter() {
+    private function process_filter(): array {
         global $SESSION;
         $filtersql = [];
         $params = [];
@@ -149,7 +149,7 @@ class report_filter {
      * @return array filter sql and its params
      * @throws \moodle_exception
      */
-    public function get_sql_filter() {
+    public function get_sql_filter(): array {
         // Add new filters if any.
         $this->add_filters();
         // Remove filters if any.

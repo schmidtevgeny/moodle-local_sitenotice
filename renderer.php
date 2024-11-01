@@ -69,5 +69,4 @@ class local_sitenotice_renderer extends plugin_renderer_base {
         ob_end_clean();
         return $o;
     }
-
 }
