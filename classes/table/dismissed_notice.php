@@ -173,7 +173,7 @@ class dismissed_notice extends table_sql implements renderable {
      * @param int $pagesize number of records to fetch
      * @param bool $useinitialsbar initial bar
      */
-    public function query_db(int $pagesize, bool $useinitialsbar = true) {
+    public function query_db($pagesize, $useinitialsbar = true) {
         global $DB;
 
         list($countsql, $countparams) = $this->get_sql_and_params(true);
