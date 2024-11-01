@@ -52,22 +52,23 @@ if (empty($notice)) {
     echo $output->header();
     echo $OUTPUT->notification(get_string('notification:nodis', 'local_sitenotice'), 'notifyinfo');
     echo $output->footer();
-}
-// Get current filter for the report.
-$filter = new report_filter($thispage, dismissed_notice::TABLE_ALIAS);
-list($filtersql, $params) = $filter->get_sql_filter();
+} else {
+    // Get current filter for the report.
+    $filter = new report_filter($thispage, dismissed_notice::TABLE_ALIAS);
+    list($filtersql, $params) = $filter->get_sql_filter();
 
-$table = new dismissed_notice('dismissed_notice_table', $thispage, $notice->id, ['filtersql' => $filtersql, 'params' => $params],
-    $download, $page, 20);
-if ($table->is_downloading()) {
-    \core\session\manager::write_close();
+    $table = new dismissed_notice('dismissed_notice_table', $thispage, $notice->id, ['filtersql' => $filtersql, 'params' => $params],
+        $download, $page, 20);
+    if ($table->is_downloading()) {
+        \core\session\manager::write_close();
+        echo $output->render($table);
+        die();
+    }
+
+    echo $output->header();
+    echo $output->heading($notice->title);
+    echo $output->heading(get_string('report:dismissed_desc', 'local_sitenotice'), 4);
+    $filter->display_forms();
     echo $output->render($table);
-    die();
+    echo $output->footer();
 }
-
-echo $output->header();
-echo $output->heading($notice->title);
-echo $output->heading(get_string('report:dismissed_desc', 'local_sitenotice'), 4);
-$filter->display_forms();
-echo $output->render($table);
-echo $output->footer();
